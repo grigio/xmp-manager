@@ -92,7 +92,9 @@ class Controller
 
 		
 		ext_tags = all_tags.uniq - @tags
-		ext_tags ||= []	
+		ext_tags ||= []
+		# HACK
+		@external_tags = ext_tags
 		return ext_tags
   end
   
@@ -176,6 +178,10 @@ class Controller
 	  puts "\n>> #{method_name}\n"+@metadata.inspect if DEBUG
   end
   
+  def quit
+    #save external_tags
+    File::open("#{@current_directory}/.tags.cache",'w'){|f| f.write(@external_tags.join("\n"))}    
+  end
   
 	def parse_line(line)
 		# "Country                         : italia".downcase.strip
@@ -382,6 +388,7 @@ class View
   end
 	
 	def quit
+	  @controller.quit
 	  # HACK: a writing couldn't be finished yet
 	  sleep 2
 		Gtk.main_quit
