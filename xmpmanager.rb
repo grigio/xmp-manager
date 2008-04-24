@@ -43,9 +43,25 @@ end
 class Controller
   def initialize
     @metadata = Hash.new
+    
     load_file_paths #set @files if possible
     load_metadata
+    
+    chunks = @files[0].split('/')
+    @current_directory = chunks[0..chunks.size-2].join('/') || "."
+    
     #View.new(self)
+  end
+  
+  def valid_tags_cache?(filename)
+    puts "\n\n filename:#{filename}"
+    begin
+    if File::mtime(filename).min == Time.now.min
+      return true
+    end
+    rescue
+    end
+      return false
   end
   
   #
@@ -53,19 +69,27 @@ class Controller
   #
   def external_tags
     all_tags=[]
-    chunks = @files[0].split('/')
-    directory= chunks[0..chunks.size-2].join('/')
-  	cmd = open("|#{EXIFTOOL} #{directory} -xmp:subject")
-		while (temp = cmd.gets)
-		  # good string with :
-  		if temp[0..32] == 'Subject                         :'
-    		#temp = cmd.gets
-    		key, value = parse_line(temp)
-    		all_tags += value.split(', ') unless value.nil?
+    filename = "#{@current_directory}/.tags.cache"
+    
+    # a recent cache    
+    if valid_tags_cache?(filename)
+      File.open(filename).each_line{|tag| all_tags << tag.strip}
+    else    
+    # scan the filesystem
+    	cmd = open("|#{EXIFTOOL} #{@current_directory} -xmp:subject")
+		  while (temp = cmd.gets)
+		    # good string with :
+    		if temp[0..32] == 'Subject                         :'
+      		#temp = cmd.gets
+      		key, value = parse_line(temp)
+      		all_tags += value.split(', ') unless value.nil?
+      	end
     	end
-  	end
-		cmd.close
-		puts "\n>> #{method_name}\n"+all_tags.inspect if DEBUG
+		  cmd.close
+		  puts "\n>> #{method_name}\n"+all_tags.inspect if DEBUG
+    end
+		
+
 		
 		ext_tags = all_tags.uniq - @tags
 		ext_tags ||= []	
@@ -143,13 +167,13 @@ class Controller
   
   # initially only field from the first selection are checked
   def load_metadata
-		cmd = open("|#{EXIFTOOL} #{@files[0]} -xmp:all")
-		while (temp = cmd.gets)
-			key, value = parse_line(temp)
-			@metadata[key] = value unless key.nil?
-		end
-		cmd.close
-		puts "\n>> #{method_name}\n"+@metadata.inspect if DEBUG
+	  cmd = open("|#{EXIFTOOL} #{@files[0]} -xmp:all")
+	  while (temp = cmd.gets)
+		  key, value = parse_line(temp)
+		  @metadata[key] = value unless key.nil?
+	  end
+	  cmd.close
+	  puts "\n>> #{method_name}\n"+@metadata.inspect if DEBUG
   end
   
   
