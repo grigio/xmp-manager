@@ -390,7 +390,9 @@ class View
 	def quit
 	  @controller.quit
 	  # HACK: a writing couldn't be finished yet
-	  sleep 2
+	  while @tmain.alive? do
+      sleep 0.1
+    end
 		Gtk.main_quit
 	end
 
