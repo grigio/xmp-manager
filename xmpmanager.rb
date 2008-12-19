@@ -20,7 +20,7 @@
 $LOAD_PATH << File.expand_path(File.dirname(__FILE__)+'/lib')
 DATA_DIR = File.expand_path(File.dirname(__FILE__))+'/data'
 EXIFTOOL = "/usr/bin/exiftool"
-DEBUG = true
+DEBUG = false
 
 require 'monitor'
 require 'libglade2'
@@ -37,19 +37,22 @@ class Object
   end
 end
 
+class String
+  def prepare_for_shell
+    self.gsub(/\s/,'\ ')
+  end
+end
+
 #
 # It executes really the actions
 #
 class Controller
   def initialize
     @metadata = Hash.new
-    
     load_file_paths #set @files if possible
     load_metadata
-    
     chunks = @files[0].split('/')
     @current_directory = chunks[0..chunks.size-2].join('/') || "."
-    
     #View.new(self)
   end
   
@@ -76,7 +79,7 @@ class Controller
       File.open(filename).each_line{|tag| all_tags << tag.strip}
     else    
     # scan the filesystem
-    	cmd = open("|#{EXIFTOOL} #{@current_directory} -xmp:subject")
+    	cmd = open("|#{EXIFTOOL} #{@current_directory.prepare_for_shell} -xmp:subject")
 		  while (temp = cmd.gets)
 		    # good string with :
     		if temp[0..32] == 'Subject                         :'
@@ -88,9 +91,7 @@ class Controller
 		  cmd.close
 		  puts "\n>> #{method_name}\n"+all_tags.inspect if DEBUG
     end
-		
 
-		
 		ext_tags = all_tags.uniq - @tags
 		ext_tags ||= []
 		# HACK
@@ -99,7 +100,7 @@ class Controller
   end
   
   def tags
-		cmd = open("|#{EXIFTOOL} #{@files[0]} -xmp:subject")
+		cmd = open("|#{EXIFTOOL} #{@files[0].prepare_for_shell} -xmp:subject")
 		#while (temp = cmd.gets)
 		temp = cmd.gets
 			key, value = parse_line(temp)
@@ -120,7 +121,7 @@ class Controller
 		#Thread.new {
 		@files.each do |filename|
 			# TODO: multiple command & errors
-			command = "|#{EXIFTOOL} #{filename} -xmp:#{field}=\"#{value}\" -overwrite_original_in_place"
+			command = "|#{EXIFTOOL} #{filename.prepare_for_shell} -xmp:#{field}=\"#{value}\" -overwrite_original_in_place"
 			cmd = open(command)
 			puts "\n>> #{method_name}\n"+command if DEBUG
 			#while (temp = cmd.gets)
@@ -137,7 +138,7 @@ class Controller
 			  xmp_subjects << " -xmp:subject=\"#{tag}\""
 			end
 			xmp_subjects = " -xmp:subject=\"\"" if xmp_subjects == ''
-			command = "|#{EXIFTOOL} #{filename} #{xmp_subjects} -overwrite_original_in_place"
+			command = "|#{EXIFTOOL} #{filename.prepare_for_shell} #{xmp_subjects} -overwrite_original_in_place"
 			cmd = open(command)
 			puts "\n>> #{method_name}\n"+command if DEBUG
 			cmd.close
@@ -163,19 +164,19 @@ class Controller
       puts "\n>> #{method_name}\n"+"You need to specify at least a file!"
       exit(1)
     end
-    puts "\n>> #{method_name}\n"+@files.inspect if DEBUG
+    puts "\n>>  #{method_name}\n"+@files.inspect+"  \n end\n" if DEBUG
   end
 
   
   # initially only field from the first selection are checked
   def load_metadata
-	  cmd = open("|#{EXIFTOOL} #{@files[0]} -xmp:all")
+    cmd = open("|#{EXIFTOOL} #{@files[0].prepare_for_shell} -xmp:all")
 	  while (temp = cmd.gets)
 		  key, value = parse_line(temp)
 		  @metadata[key] = value unless key.nil?
 	  end
 	  cmd.close
-	  puts "\n>> #{method_name}\n"+@metadata.inspect if DEBUG
+	  puts "\n>> #{method_name}\n"+@metadata.inspect+"\n END \n" if DEBUG
   end
   
   def quit
@@ -201,6 +202,7 @@ class View
     init_gui
     setup_tag_box
     update_gui
+    
     @lock= Monitor.new
 		@confirm_secs= 1
 		@ready_to_write= true
