@@ -314,10 +314,10 @@ class View
   #
   def update_tag_box
     if is_valid_tag @tag_entry.text
-  	  checkbutton = @tag_entry.text
-      create_tag_checkbutton(checkbutton, false)
-  	  @tag_entry.text=''
-  	end  
+      checkbutton = @tag_entry.text
+      create_tag_checkbutton(checkbutton, true)
+      @tag_entry.text=''
+    end  
   end
   
   #
