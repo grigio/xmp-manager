@@ -1,0 +1,37 @@
+#!/usr/bin/ruby
+
+# XMP Manager is a GUI to easly write XMP Metadata and tags on files
+# 
+# Copyright (C) 2007 Luigi Maselli <luigix_@t_gmail_com>
+#
+# This program is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation; either version 2, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
+# St, Fifth Floor, Boston, MA 02110-1301 USA
+
+$LOAD_PATH << File.expand_path(File.dirname(__FILE__)+'/lib')
+DATA_DIR = File.expand_path(File.dirname(__FILE__))+'/data'
+DEBUG = true
+
+APP_NAME					= 'Xmp Manager'
+APP_COPYRIGHT			= "Copyright (c) #{Time.now.year} Luigi Maselli"
+APP_AUTHORS 			= ['Luigi Maselli <luigix_@t_gmail.com>']
+APP_VERSION				= 0.5
+APP_LOGO_FILENAME = ''
+
+GCONF_ROOT		= '/apps/xmp-manager'
+
+require 'xmpmanager/selection'
+require 'xmpmanager/ui/gtk'
+
+XmpManager::MainWindow.new
+
+#TODO: Manage errors w gui STDERR
