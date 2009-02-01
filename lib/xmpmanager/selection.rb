@@ -25,7 +25,7 @@ class Selection
 
   def initialize(*paths)
     # clean *paths ARGV ?
-    *paths = 'spec/images/write-tests/a.jpg', 'spec/images/write-tests/b.jpg' if DEBUG
+    #*paths = 'spec/images/write-tests/a.jpg', 'spec/images/write-tests/b.jpg' if DEBUG
     @files = load_files(*paths) # return a File Array
     @field, @status, @tags = {}, {}, {}
     #@field, @status, @tags = 
