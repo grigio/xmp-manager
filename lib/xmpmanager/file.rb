@@ -39,7 +39,11 @@ class File
   
   # is selection? TODO: write tag?
   def tags
-    @field['subject'].split(', ').sort
+    if @field['subject']
+      @field['subject'].split(', ').sort
+    else
+      []
+    end
   end
 
   def reload!

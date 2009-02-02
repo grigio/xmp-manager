@@ -58,7 +58,6 @@ class MainWindow
     end
     # FIXME: merge fields with default template OR template without dynamic?
     
-    puts instance_variables if DEBUG
         
     @window = b.get_object('window')
     @tag_box = b.get_object('tag_box')

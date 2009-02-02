@@ -39,8 +39,12 @@ module Exiftool
       unless field == 'subject'
         field_list << " -xmp:#{field}=\"#{value}\""
       else
-        tags = value.split(", ")
-        tags.each {|tag| field_list << " -xmp:#{field}=\"#{tag}\""}
+        if not tags.empty?
+          tags = value.split(", ")
+          tags.each {|tag| field_list << " -xmp:#{field}=\"#{tag}\""}
+        else
+          field_list << " -xmp:subject=\"\" "
+        end
       end
 	  end
 	  command = "#{EXIFTOOL} #{path} #{field_list} -overwrite_original_in_place"

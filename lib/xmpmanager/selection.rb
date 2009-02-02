@@ -77,7 +77,7 @@ class Selection
       end
       
       tags_to_write = ""
-      @tags.each{|key, value| tags_to_write << key+", "} #TODO: fix inconsistencies
+      @tags.each{|key, value| tags_to_write << key+", " if @tags[key] != false} #TODO: fix inconsistencies
       file.field['subject'] = tags_to_write
       
       file.save
@@ -96,7 +96,7 @@ class Selection
   
   def load_selection
     # load default fields FIXME: move to template
-    @field.merge! 'description' => '', 'author' => '', 'rights' => ''
+    @field.merge! 'description' => '', 'creator' => '', 'rights' => '', 'title' => ''
     # load data
     @files.each do |file|
        @field.merge! file.fields
