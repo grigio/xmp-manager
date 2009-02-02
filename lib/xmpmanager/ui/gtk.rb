@@ -21,7 +21,7 @@ module XmpManager
 
 class MainWindow
   def initialize
-    @selection = XmpManager::Selection.new(ARGV)
+    @selection = XmpManager::Selection.new(ARGV[0])
     
     init_gui
   end
