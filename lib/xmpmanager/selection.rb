@@ -23,10 +23,10 @@ class Selection
   # backend specific methods
   include XmpManager::Exiftool
 
-  def initialize(*paths)
+  def initialize(paths)
     # clean *paths ARGV ?
-    #*paths = 'spec/images/write-tests/a.jpg', 'spec/images/write-tests/b.jpg' if DEBUG
-    @files = load_files(*paths) # return a File Array
+    #paths = 'spec/images/write-tests/a.jpg', 'spec/images/write-tests/b.jpg' if DEBUG
+    @files = load_files(paths) # return a File Array
     @field, @status, @tags = {}, {}, {}
     #@field, @status, @tags = 
     load_selection # from @files
@@ -86,7 +86,7 @@ class Selection
   
   private
   
-  def load_files(*paths)
+  def load_files(paths)
     files = []
     paths.each do |path| 
       files << XmpManager::File.new(path)

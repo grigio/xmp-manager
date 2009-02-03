@@ -29,6 +29,12 @@ APP_LOGO_FILENAME = ''
 
 GCONF_ROOT		= '/apps/xmp-manager'
 
+if ARGV.empty?
+  puts 'you should specify at list a file' #TODO: Gtk error
+  exit 1
+end
+
+
 require 'xmpmanager/selection'
 require 'xmpmanager/ui/gtk'
 

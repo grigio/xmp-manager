@@ -21,7 +21,7 @@ module XmpManager
 
 class MainWindow
   def initialize
-    @selection = XmpManager::Selection.new(ARGV[0])
+    @selection = XmpManager::Selection.new(ARGV)
     
     init_gui
   end
@@ -47,7 +47,6 @@ class MainWindow
   				eval <<-END
   				  @#{name}.text = @selection.#{name}
 						@#{name}.signal_connect('changed') do
-						 puts "@#{name}"+"="+@#{name}.text
 						 @selection.#{name} = @#{name}.text
 						end
   				END
