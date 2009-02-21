@@ -1,6 +1,12 @@
-- autosave safe?
-- geotagging location map widget?
-- secondary fields
-- gps trace mapping
+before 0.50
+x New code base
+- Support for localization
+- a deb package other packages are welcome
+
+other
+- visualize gtk errors gtk errors
 - rating see: http://www.itagsoftware.com/compat.php
-- cache dir tag .ctags
+- fix backspace bug
+- a filter on xmp field
+- visualize coordinates on a map (google maps or open/SA maps)
+- visualize the saving delay
