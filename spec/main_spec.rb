@@ -48,7 +48,7 @@ end
 
 describe Selection do
   before(:each) do
-    @selection = XmpManager::Selection.new('spec/images/gnome-cup.jpg', 'spec/images/ubuntu-cup.jpg')
+    @selection = XmpManager::Selection.new(['spec/images/gnome-cup.jpg', 'spec/images/ubuntu-cup.jpg'])
   end
 
   it "should manage field" do
