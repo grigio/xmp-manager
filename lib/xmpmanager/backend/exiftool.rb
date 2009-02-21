@@ -22,7 +22,7 @@ module Exiftool
   
   def load_fields(path)
     fields = {}
-    command = "|#{EXIFTOOL} #{path} -xmp:all"
+    command = "|#{EXIFTOOL} \"#{path}\" -xmp:all"
     puts ">> #{command}" if DEBUG
     cmd = open(command)
 	  while (temp = cmd.gets)
