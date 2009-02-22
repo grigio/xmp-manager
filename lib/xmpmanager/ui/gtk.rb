@@ -49,7 +49,9 @@ class MainWindow
     Gtk.init
     b = Gtk::Builder.new
     b.add_from_file(DATA_DIR+'/xmpmanager/nautilus-xmp-manager.ui')
-    # b.translation_domain # TODO: select the language
+    b.translation_domain = 'xmpmanager'# TODO: select the language
+    
+    puts b.translation_domain
     
     # It generates dynamic methods/signals called by UI
     b.connect_signals{|name|
