@@ -19,9 +19,10 @@ task :RegeneratePot do
   system 'rgettext xmp-manager data/xmpmanager/nautilus-xmp-manager.glade > po/xmpmanager.pot'
 end
 
-task :RegeneratePot do
+task :RegeneratePo do
   puts "Regenerate the Po"
-  system 'rmsgfmt po/it.po -o po/it.mo' #TODO: for each lang po avalaible
+  system 'mkdir po/it_IT'
+  system 'rmsgfmt po/it.po -o po/it_IT/xmpmanager.mo' #TODO: for each lang po avalaible
 end
 
 task :RegenerateDeb do

@@ -16,39 +16,30 @@
 # St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require 'gtk2'
+require 'gettext'
 
-    # Localization support
-    begin
-      require 'gettext'
-    rescue LoadError
-      unless defined? GetText
-        module GetText
-          module_function
-          def _(msgid); msgid; end
-          def N_(msgid); msgid; end
-          def n_(msgid, msgid_plural, n)
-	    msgid
-          end
-          def s_(msgid, div = '|')
-	    if index = msgid.rindex(div)
-	      msgid = msgid[(index + 1)..-1]
-	    else
-	      msgid
-	    end
-          end
-          def bindtextdomain(domainname, path = nil, locale = nil, charset = nil)
-          end
-        end
-      end
-    end
+## Localization support
+#unless defined? GetText
+#  module GetText
+#    module_function
+#    def _(msgid); msgid; end
+#    def N_(msgid); msgid; end
+#    def n_(msgid, msgid_plural, n)
+#      msgid
+#    end
+#  end
+#end
 
 module XmpManager
 
 class MainWindow
-  def initialize
+  def initialize  
     localedir = 'po'
-    domain = ''
+    domain = 'xmpmanager'
     GetText.bindtextdomain(domain, localedir, nil, "UTF-8")
+    # DEBUG
+    puts GetText.gettext('Title:')
+
     @selection = XmpManager::Selection.new(ARGV)
     
     init_gui
