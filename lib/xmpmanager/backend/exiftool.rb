@@ -47,7 +47,7 @@ module Exiftool
         end
       end
 	  end
-	  command = "#{EXIFTOOL} #{path} #{field_list} -overwrite_original_in_place"
+	  command = "#{EXIFTOOL} #{path.gsub(' ','\ ')} #{field_list} -overwrite_original_in_place"
 	  puts ">> #{command}" if DEBUG
 	  cmd = system command
   end
