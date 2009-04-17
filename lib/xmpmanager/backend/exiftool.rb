@@ -51,6 +51,12 @@ module Exiftool
 	  puts ">> #{command}" if DEBUG
 	  cmd = system command
   end
+  
+  def erase
+	  command = "#{EXIFTOOL} #{path.gsub(' ','\ ')} -all= -overwrite_original_in_place"
+	  puts ">> #{command}" if DEBUG
+	  cmd = system command    
+  end
   # --
   
   private

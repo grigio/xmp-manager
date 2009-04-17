@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<!--*- mode: xml -*-->
 <interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkDialog" id="window">
     <property name="border_width">5</property>
     <property name="title">Metadata</property>
-    <property name="window_position">GTK_WIN_POS_CENTER</property>
-    <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
+    <property name="window_position">center</property>
+    <property name="type_hint">dialog</property>
     <property name="has_separator">False</property>
-    <signal handler="on_window_destroy" name="destroy"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -38,6 +38,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -53,12 +54,6 @@
                             <property name="n_columns">2</property>
                             <property name="column_spacing">3</property>
                             <property name="row_spacing">3</property>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
                             <child>
                               <object class="GtkEntry" id="description_auto">
                                 <property name="visible">True</property>
@@ -78,7 +73,7 @@
                                 <property name="xalign">0</property>
                                 <property name="yalign">0</property>
                                 <property name="label" translatable="yes">Creator:</property>
-                                <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                                <property name="justify">right</property>
                               </object>
                               <packing>
                                 <property name="top_attach">2</property>
@@ -93,7 +88,7 @@
                                 <property name="xalign">0</property>
                                 <property name="yalign">0</property>
                                 <property name="label" translatable="yes">Title:</property>
-                                <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                                <property name="justify">right</property>
                               </object>
                               <packing>
                                 <property name="x_options">GTK_FILL</property>
@@ -117,7 +112,7 @@
                                 <property name="xalign">0</property>
                                 <property name="yalign">0</property>
                                 <property name="label" translatable="yes">Description:</property>
-                                <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                                <property name="justify">right</property>
                               </object>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -142,7 +137,7 @@
                                 <property name="xalign">0</property>
                                 <property name="yalign">0</property>
                                 <property name="label" translatable="yes">Copyright Notice:</property>
-                                <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                                <property name="justify">right</property>
                               </object>
                               <packing>
                                 <property name="top_attach">3</property>
@@ -161,6 +156,12 @@
                                 <property name="top_attach">3</property>
                                 <property name="bottom_attach">4</property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
                         </child>
@@ -185,6 +186,7 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
               </object>
@@ -220,6 +222,7 @@
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -235,6 +238,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
@@ -252,14 +256,15 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
                               <object class="GtkScrolledWindow" id="scrolledwindow2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                                <property name="hscrollbar_policy">automatic</property>
+                                <property name="vscrollbar_policy">automatic</property>
                                 <child>
                                   <object class="GtkViewport" id="keyword_viewport">
                                     <property name="visible">True</property>
@@ -296,14 +301,18 @@
                                     <property name="can_focus">True</property>
                                     <property name="is_focus">True</property>
                                   </object>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
                                 </child>
                                 <child>
                                   <object class="GtkButton" id="add_tag_button">
+                                    <property name="label">gtk-add</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="has_focus">True</property>
                                     <property name="is_focus">True</property>
-                                    <property name="label">gtk-add</property>
+                                    <property name="receives_default">False</property>
                                     <property name="use_stock">True</property>
                                     <signal handler="on_add_tag_button_pressed" name="pressed"/>
                                   </object>
@@ -329,6 +338,9 @@
                       </packing>
                     </child>
                   </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
                 </child>
               </object>
             </child>
@@ -352,28 +364,49 @@
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
-            <property name="layout_style">GTK_BUTTONBOX_END</property>
+            <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="save_button">
+              <object class="GtkButton" id="erase_button">
+                <property name="label">gtk-delete</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_erase_button_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="save_button">
                 <property name="label">gtk-save</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
                 <signal handler="on_save_button_clicked" name="clicked"/>
               </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
             </child>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="pack_type">GTK_PACK_END</property>
+            <property name="pack_type">end</property>
             <property name="position">1</property>
           </packing>
         </child>
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">add_tag_button</action-widget>
       <action-widget response="-7">save_button</action-widget>
     </action-widgets>
   </object>

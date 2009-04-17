@@ -116,6 +116,10 @@ class MainWindow
     # quit
   end
   
+  def on_erase_button_clicked
+    @selection.erase
+  end
+  
   def on_window_destroy
     #@selection.changed? Gtk.main_quit : confirm('The changes made will be lost')
     Gtk.main_quit

@@ -70,6 +70,12 @@ class Selection
     @status[key]
   end
   
+  def erase
+    @files.each do |file|
+      file.erase
+    end
+  end
+  
   def save
     @files.each do |file|
       @field.each do |key, value|
