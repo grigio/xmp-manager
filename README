@@ -1,7 +1,5 @@
-see: http://grigio.org/xmp_manager
+Xmp Manager is a Gui to write xmp metadata on .png, .jpeg files.
 
-Regenerate the UI
-------------------
-Xmp Manager uses Gtk::Builder, but Glade doesn't support it natively so you need to regenerate the Gtk GUI everytime you do a change:
 
-$ gtk-builder-convert data/xmpmanager/nautilus-xmp-manager.glade data/xmpmanager/nautilus-xmp-manager.ui
+more info on: http://grigio.org/xmp_manager
+

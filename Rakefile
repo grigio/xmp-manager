@@ -9,11 +9,6 @@ Spec::Rake::SpecTask.new do |t|
   t.spec_opts = ['--options', 'spec/spec.opts']
 end
 
-task :RegenerateUi do
-  puts "Regenerate the Gtk GUI"
-  system 'gtk-builder-convert data/xmpmanager/nautilus-xmp-manager.glade data/xmpmanager/nautilus-xmp-manager.ui'
-end
-
 task :RegeneratePot do
   puts "Regenerate the Pot"
   system 'rgettext xmp-manager data/xmpmanager/nautilus-xmp-manager.glade > po/xmpmanager.pot'
