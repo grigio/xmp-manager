@@ -1,0 +1,44 @@
+.TH XMPMANAGER "1" "23 April 2009"
+
+.SH NAME
+xmp manager \- is a tool to manage your digital photographs in GNU/Linux.
+Here a copy from digiwf
+
+.SH SYNOPSIS
+\fBdigiwf\fR [\fB\-\-debug|\-d\fR] <\fBfilename\fR> [\fBfilename\fR] [\fB...\fR]
+.TP
+\fBdigiwf\fR [\fB\-\-debug|\-d\fR] \-\-workflow|\-w <\fBdirectory\fR>
+
+.SH DESCRIPTION
+\fBdigiwf\fR runs in two modes: either it is run in GUI mode, or it is run in workflow mode.
+.TP
+GUI mode is used to edit the XMP metadata of your digital photographs.  \fBdigiwf\fR is integrated with Nautilus Actions so you right-click on a photos (or a selection of multiple photos) to "Edit metadata..."
+.TP
+Workflow mode moves untagged photos into an 'unsorted' repository and tagged photos into a 'sorted' repository.  In addition to sorting photos in a directory structure based on the date they were taken, tagged photos will also be renamed to their XMP-dc:Title field. Via the Nautilus Actions integration, you can right click on a directory to "File images".
+.TP
+
+.SH OPTIONS
+Listed below are the command line options for \fBdigiwf\fR:
+.TP
+.B \-\-debug|\-d
+Activates debug output
+.TP
+.B \-\-workflow|\-w <\fBdirectory\fR>
+Activates workflow mode and moves the files contained in <\fBdirectory\fR> to a central repository.  All the files in subdirectories will be processed as well.
+
+.SH EXAMPLE
+.TP
+digiwf a_photo.jpg
+Starts the GUI allowing you to edit the XMP Metadata tags in a_photo.jpg
+.TP
+digiwf -w /media/my_usb_key/DCIM
+Starts the workflow and moves all your photos off your USB key into your central photo repository.
+
+.SH AUTHOR
+\fBdigiwf\fR was originally written by Luigi Maselli <riccio@inmail.sk>, and this manual page by Stefaan Vanderheyden <mrsvan@hotmail.com>.
+
+Both are released under the GNU General Public License, version 2 or later.
+
+.SH "SEE ALSO"
+.BR exiftool(1p),
+.BR nautilus-actions(1)

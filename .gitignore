@@ -1,2 +1,4 @@
 spec/images/write-tests/*
 *.mo
+pkg/*
+debian/changelog

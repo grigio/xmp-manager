@@ -24,7 +24,6 @@ $_spec_spec = true # Prevents Kernel.exit in various places
  
 require 'spec'
 require 'spec/mocks'
-require 'spec/story'
 spec_classes_path = File.expand_path("#{dir}/../spec/spec/spec_classes")
 
 DEBUG = false

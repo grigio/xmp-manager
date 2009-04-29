@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#! /usr/bin/ruby1.8
 
 # XMP Manager is a GUI to easly write XMP Metadata and tags on files
 # 
@@ -17,9 +17,15 @@
 # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 # St, Fifth Floor, Boston, MA 02110-1301 USA
 
-$LOAD_PATH << File.expand_path(File.dirname(__FILE__)+'/lib')
-DATA_DIR = File.expand_path(File.dirname(__FILE__))+'/data'
-DEBUG = true
+if File.dirname(__FILE__) != "/usr/bin"
+  $LOAD_PATH << File.expand_path("../"+File.dirname(__FILE__)+'/lib')
+  DATA_DIR = File.expand_path("../"+File.dirname(__FILE__))+'/data'
+  PO_DIR = File.expand_path("../"+File.dirname(__FILE__))+'/po'
+  DEBUG = true
+else
+  DATA_DIR = "/usr/share"
+  PO_DIR = "/usr/share/locale"
+end
 
 APP_NAME					= 'Xmp Manager'
 APP_COPYRIGHT			= "Copyright (c) #{Time.now.year} Luigi Maselli"

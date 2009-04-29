@@ -1,0 +1,16 @@
+xmp-manager (0.3.2-0ubuntu1) jaunty; urgency=low
+
+  * Integrated DigiWf with Nautilus Actions so that the shortcuts are created
+    automatically upon installation. Right-click on a directory to "File 
+    images". Right-click on picture (or a selection of multiple pictures) to 
+    "Edit metadata..."
+  * Removed unused UI elements.
+  * Added an icon to the GUI.
+
+ -- Stefaan Vanderheyden <mrsvan@hotmail.com>  Fri, 24 Apr 2009 23:05:49 +0200
+
+xmp-manager (0.3.1-0ubuntu1) jaunty; urgency=low
+
+  * Initial Release.
+
+ -- Stefaan Vanderheyden <mrsvan@hotmail.com>  Wed, 22 Apr 2009 10:43:06 +0200

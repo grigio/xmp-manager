@@ -1,0 +1,27 @@
+Source: xmp-manager
+Section: graphics
+Priority: optional
+Maintainer: Luigi Maselli <luigix_@t_hotmail.com>
+Build-Depends: ruby1.8, ruby-pkg-tools, cdbs, debhelper (>= 7)
+Standards-Version: 3.8.0
+Homepage: http://grigio.org/xmp_manager
+
+Package: xmp-manager
+Architecture: all
+Depends: ruby1.8, ruby-gnome2, libimage-exiftool-perl, ${shlibs:Depends}, ${misc:Depends}
+Suggests: nautilus-actions
+Description: Automates and optimizes your digital workflow
+ xmp-manager is a small collection of tools for automating and 
+ optimizing your digital workflow using GNOME Nautilus.
+ The tools allow you to quickly copy, sort, tag, rename and
+ centrally file all your digital photography by right-clicking
+ in your Nautilus file browser.
+ .
+ The tools used in xmp-manager are primarily based on the exceptional work of:
+ .
+   * Luigi Maselli's XMP-Manager
+     (http://grigio.org/xmp_manager)
+   * Phil Harvey's exiftool
+     (http://www.sno.phy.queensu.ca/~phil/exiftool/)
+   * GrumZ's Nautilus Actions
+     (http://www.grumz.net/index.php?q=taxonomy/term/2/9)

@@ -26,6 +26,7 @@ task :RegeneratePo do
 end
 
 task :RegenerateDeb do
-  puts "TODO Regenerate the Deb"
-  system 'insert command here'
+  puts "Regenerate the Deb"
+  system 'dpkg-buildpackage -us -uc -tc'
+  system 'mv ../xmp-manager_* pkg'
 end

@@ -40,7 +40,7 @@ class MainWindow
   end
   
   def initialize  
-    GetText.bindtextdomain('xmpmanager', '/home/grigio/Progetti/xmp-manager/po')
+    GetText.bindtextdomain('xmpmanager', PO_DIR)
     GetText.textdomain("xmpmanager")
 
     # DEBUG
