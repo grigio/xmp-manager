@@ -7,51 +7,51 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-21 23:36+0100\n"
-"PO-Revision-Date: 2009-02-21 23:36+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-29 14:12+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:36
+#: data/xmpmanager/nautilus-xmp-manager.ui:36
 msgid "<span weight=\"bold\">Common Fields</span>"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:81
+#: data/xmpmanager/nautilus-xmp-manager.ui:76
 msgid "Creator:"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:96
+#: data/xmpmanager/nautilus-xmp-manager.ui:91
 msgid "Title:"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:120
+#: data/xmpmanager/nautilus-xmp-manager.ui:115
 msgid "Description:"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:145
+#: data/xmpmanager/nautilus-xmp-manager.ui:140
 msgid "Copyright Notice:"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:201
+#: data/xmpmanager/nautilus-xmp-manager.ui:200
 msgid "General informations"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:222
+#: data/xmpmanager/nautilus-xmp-manager.ui:220
 msgid "<span weight=\"bold\">Keywords</span>"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:238
+#: data/xmpmanager/nautilus-xmp-manager.ui:237
 msgid "    "
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:254
+#: data/xmpmanager/nautilus-xmp-manager.ui:254
 msgid "Choose the related keywords below or add the new ones"
 msgstr ""
 
-#: data/xmpmanager/nautilus-xmp-manager.glade:349
+#: data/xmpmanager/nautilus-xmp-manager.ui:356
 msgid "Tags"
 msgstr ""

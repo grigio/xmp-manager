@@ -32,14 +32,20 @@ require 'gettext'
 
 module XmpManager
 
-class MainWindow
-  def initialize  
-    localedir = 'po'
-    domain = 'xmpmanager'
-    GetText.bindtextdomain(domain, localedir, nil, "UTF-8")
-    # DEBUG
-    puts GetText.gettext('Title:')
 
+class MainWindow
+
+  def _(sentence)
+    GetText.gettext(sentence)
+  end
+  
+  def initialize  
+    GetText.bindtextdomain('xmpmanager', '/home/grigio/Progetti/xmp-manager/po')
+    GetText.textdomain("xmpmanager")
+
+    # DEBUG
+    puts _('Title:')+"\n"
+    
     @selection = XmpManager::Selection.new(ARGV)
     
     init_gui
@@ -51,7 +57,7 @@ class MainWindow
     b.add_from_file(DATA_DIR+'/xmpmanager/nautilus-xmp-manager.ui')
     b.translation_domain = 'xmpmanager'# TODO: select the language
     
-    puts b.translation_domain
+    puts _('Title:')+"\n"
     
     # It generates dynamic methods/signals called by UI
     b.connect_signals{|name|
@@ -86,6 +92,14 @@ class MainWindow
     @add_tag_button = b.get_object('add_tag_button')
     @save_button = b.get_object('save_button')
     
+    b.objects.each do |obj|
+      begin
+        #unless obj.class? == Entry
+          obj.label = _(obj.text)
+        #end
+      rescue
+      end
+    end
     
     @selection.tags.each do |tag|
       create_tag_checkbutton(tag, true)

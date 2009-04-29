@@ -11,7 +11,12 @@ end
 
 task :RegeneratePot do
   puts "Regenerate the Pot"
-  system 'rgettext xmp-manager data/xmpmanager/nautilus-xmp-manager.glade > po/xmpmanager.pot'
+  system 'xgettext --from-code=UTF-8 --language=glade data/xmpmanager/nautilus-xmp-manager.ui -o po/xmpmanager.pot'
+end
+
+task :RegeneratePotRb do
+  puts "Regenerate the Pot"
+  system 'rgettext lib/xmpmanager/ui/gtk.rb -o po/xmpmanagerrb.pot'
 end
 
 task :RegeneratePo do

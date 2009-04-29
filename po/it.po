@@ -30,7 +30,7 @@ msgstr "Titolo:"
 
 #: data/xmpmanager/nautilus-xmp-manager.glade:120
 msgid "Description:"
-msgstr ""
+msgstr "Descrizione:"
 
 #: data/xmpmanager/nautilus-xmp-manager.glade:145
 msgid "Copyright Notice:"

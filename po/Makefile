@@ -3,7 +3,7 @@ POT=./xmpmanager.pot
 
 RUBY=../bin/alexandria $(shell find ../lib -name '*.rb' -and -not -path '*macui*')
 
-GLADE=$(shell find ../data -name '*.glade')
+GLADE=$(shell find ../data -name '*.ui')
 
 HEADERS=$(shell find .. -name '*.h')
 
