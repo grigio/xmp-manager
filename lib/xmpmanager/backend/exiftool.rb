@@ -19,6 +19,7 @@ module XmpManager
 
 module Exiftool
   EXIFTOOL = "/usr/bin/exiftool"
+  DEBUG = "true" # FIXME
   
   def load_fields(path)
     fields = {}

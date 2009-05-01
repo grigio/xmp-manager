@@ -1,7 +1,7 @@
 Source: xmp-manager
 Section: graphics
 Priority: optional
-Maintainer: Luigi Maselli <luigix_@t_hotmail.com>
+Maintainer: Luigi Maselli <riccio@inmail.sk>
 Build-Depends: ruby1.8, ruby-pkg-tools, cdbs, debhelper (>= 7)
 Standards-Version: 3.8.0
 Homepage: http://grigio.org/xmp_manager

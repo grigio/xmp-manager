@@ -30,3 +30,15 @@ task :RegenerateDeb do
   system 'dpkg-buildpackage -us -uc -tc'
   system 'mv ../xmp-manager_* pkg'
 end
+
+task :RegenerateDebs do
+  puts "Regenerate the Debs"
+  system 'rm pkg/xmp-manager_*'
+  system 'dpkg-buildpackage -S'
+  system 'mv ../xmp-manager_* pkg'
+end
+
+task :UploadDeb do
+  puts "Upload the Deb"
+  system 'dput xmp-manager pkg/*_source.changes'
+end
